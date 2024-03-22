@@ -2,9 +2,12 @@
 
 namespace Utils;
 
-
 class Test{
 
+    /**
+     * the refactored old code from index.php
+     * 
+     */
     public function view(){
         foreach(NewsManager::getInstance()->listNews() as $news ){
             echo("############ NEWS " . $news->title . " ############\n");
@@ -15,6 +18,10 @@ class Test{
         }
     }
 
+    /**
+     * test to add news
+     * 
+     */
     public function addNewsTesting(){
         NewsManager::getInstance()->addNews([
             'title' => 'New News',
@@ -24,11 +31,19 @@ class Test{
         echo 'News added successfully';
     }
     
+    /**
+     * test to delete news
+     * @param news $id
+     */
     public function deleteNewsTesting($id){
         NewsManager::getInstance()->deleteNews($id);
         echo "News($id) deleted successfully";
     }
 
+    /**
+     * test to add a comment per news
+     * @param news $id
+     */
     public function addCommentTesting($newsId){
         CommentManager::getInstance()->addCommentForNews([
             'body' => 'New Comment Body',
@@ -38,6 +53,10 @@ class Test{
         echo 'Comment added successfully';
     }
 
+    /**
+     * test to delete a comment
+     * @param comment $id
+     */
     public function deleteCommentTesting($id){
         CommentManager::getInstance()->deleteComment($id);
         echo "Comment($id) deleted successfully";
