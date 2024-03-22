@@ -52,7 +52,7 @@ This simple application works, but with very old-style monolithic codebase, so d
 
 - I have also refactored the code and only calling the Define.php and Test.php
 
-- I have created a Test.php class so that it is clean when testing each functions by creating your custom methods inside of Test class and calling it in the index.php
+- I have created a Test.php class. So that it is clean when testing each functions by creating your custom methods inside the Test class and calling it from index.php
 
 
 ## Notes:
