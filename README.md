@@ -60,7 +60,7 @@ This simple application works, but with very old-style monolithic codebase, so d
 
 ## Other notes
 
-- I have implemented using namespaces for easy calling of classes. Notice that I renamed the class folder to models to easily implement namespace name because class folder are reserved word.
+- I have implemented using namespaces for easy calling of classes. Notice that I renamed the class folder to models to easily implement namespace name because the class name is a reserved word.
 
 ## Notes:
 
