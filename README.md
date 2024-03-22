@@ -22,7 +22,7 @@ This simple application works, but with very old-style monolithic codebase, so d
 
 ## Table Classes (class/Comment.php, class/News.php)
 
-- You can see I have extended the class/Comment.php and class/News.php in DB class.
+- You can see that I have extended the class/Comment.php and class/News.php in DB class.
 
 - The class/table.php will serve as our model-like functions. These classes will serve as our connection to tables in our database. So every newly added table we can create another class for the new table, to access the DB ORM. You can also add your custom methods in case of manipulating data. 
 
@@ -57,6 +57,10 @@ This simple application works, but with very old-style monolithic codebase, so d
 
 - I have created a Test.php class. So that it is clean when testing each functions by creating your custom methods inside the Test class and calling it from index.php
 
+
+## Other notes
+
+- I have implemented using namespaces for easy calling of classes
 
 ## Notes:
 
