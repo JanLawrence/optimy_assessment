@@ -64,7 +64,7 @@ This simple application works, but with very old-style monolithic codebase, so d
 
 - I have implemented using namespaces for easy calling of classes. Notice that I renamed the class folder to models to easily implement namespace name because the class name is a reserved word.
 
-- I have refactored the folder stucture for easy access and sorting for files. 
+- I have refactored the folder stucture for easy access and sorting of files. 
 
 ## Notes:
 
