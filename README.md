@@ -21,7 +21,7 @@ This simple application works, but with very old-style monolithic codebase, so d
 
 - You can see I have extended the class/Comment.php and class/News.php in DB class.
 
-- The class/<table>.php will serve as our model-like functions. These classes will serve as our connection to tables in our database. So every newly added table we can create another class for the new table, to access the DB ORM. You can also add your custom methods in case of manipulating data. 
+- The class/table.php will serve as our model-like functions. These classes will serve as our connection to tables in our database. So every newly added table we can create another class for the new table, to access the DB ORM. You can also add your custom methods in case of manipulating data. 
 
   - e.g.
   You can use the belongsTo() and hasChildren() when you want to get data parent to child or child to parent relationships. It can refactor when listing News and then listing Comments inside the News loop. (I have example in the code)
