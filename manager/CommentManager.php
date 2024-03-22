@@ -1,5 +1,5 @@
 <?php
-namespace Utils;
+namespace Manager;
 
 use Models\Comment;
 

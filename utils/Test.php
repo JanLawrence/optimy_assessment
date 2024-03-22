@@ -2,6 +2,8 @@
 
 namespace Utils;
 
+use Manager\CommentManager;
+use Manager\NewsManager;
 class Test{
 
     /**

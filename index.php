@@ -13,14 +13,13 @@ use Utils\Test;
 $test = new Test;
 $test->view();
 // $test->addNewsTesting();
-// $test->deleteNewsTesting(10);
-// $test->addCommentTesting(11);
-// $test->deleteCommentTesting(16);
-
+// $test->deleteNewsTesting(12);
+// $test->addCommentTesting(13);
+// $test->deleteCommentTesting(17);
 
 
 /**
  * You can also call manager class here by simply using the use keyword
- * use Utils\NewsManager;
- * use Utils\CommentManager;
+ * use Manager\NewsManager;
+ * use Manager\CommentManager;
  */

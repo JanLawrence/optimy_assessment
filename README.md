@@ -36,6 +36,8 @@ This simple application works, but with very old-style monolithic codebase, so d
 
 - I have refactored na manager classes by using the classes from the class folder that extends to the DB class ORM.
 
+- I have also moved the files to a news folder named manager.
+
 - I have removed the require_once functions in the constructor and simply used the spl_autoload_register method to automatically call the class used. It will be hassle to always call the require_once functions when using class from the class folder
 
 
@@ -61,6 +63,8 @@ This simple application works, but with very old-style monolithic codebase, so d
 ## Other notes
 
 - I have implemented using namespaces for easy calling of classes. Notice that I renamed the class folder to models to easily implement namespace name because the class name is a reserved word.
+
+- I have refactored the folder stucture for easy access and sorting for files. 
 
 ## Notes:
 
