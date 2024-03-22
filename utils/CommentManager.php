@@ -1,14 +1,11 @@
 <?php
+namespace Utils;
+
+use Models\Comment;
 
 class CommentManager
 {
 	private static $instance = null;
-
-	private function __construct()
-	{
-		require_once(ROOT . '/utils/DB.php');
-		require_once(ROOT . '/class/Comment.php');
-	}
 
 	public static function getInstance()
 	{
@@ -19,35 +16,40 @@ class CommentManager
 		return self::$instance;
 	}
 
-	public function listComments()
+	/**
+	 * List all comment
+	 * 
+	 */
+	public function listAllComments()
 	{
-		$db = DB::getInstance();
-		$rows = $db->select('SELECT * FROM `comment`');
-
-		$comments = [];
-		foreach($rows as $row) {
-			$n = new Comment();
-			$comments[] = $n->setId($row['id'])
-			  ->setBody($row['body'])
-			  ->setCreatedAt($row['created_at'])
-			  ->setNewsId($row['news_id']);
-		}
-
-		return $comments;
+		return Comment::getInstance()->get();
 	}
 
-	public function addCommentForNews($body, $newsId)
+	/**
+	 * List all comments of the news
+	 * 
+	 */
+	public function listAllNewsComments($newsId)
 	{
-		$db = DB::getInstance();
-		$sql = "INSERT INTO `comment` (`body`, `created_at`, `news_id`) VALUES('". $body . "','" . date('Y-m-d') . "','" . $newsId . "')";
-		$db->exec($sql);
-		return $db->lastInsertId($sql);
+		return Comment::getInstance()->where('news_id', '=', $newsId)->get();
 	}
 
+	/**
+	 * Create/Add comments for news
+	 * 
+	 */
+	public function addCommentForNews($data)
+	{
+		return Comment::getInstance()->create($data);  // the create() also returns the newly created data as object
+	}
+
+	/**
+	 * Delete comment by id
+	 * 
+	 */
 	public function deleteComment($id)
 	{
-		$db = DB::getInstance();
-		$sql = "DELETE FROM `comment` WHERE `id`=" . $id;
-		return $db->exec($sql);
+		$comment = Comment::getInstance()->find($id); 
+		$comment->delete();
 	}
 }

@@ -1,15 +1,11 @@
 <?php
+namespace Utils;
+
+use Models\News;
 
 class NewsManager
 {
 	private static $instance = null;
-
-	private function __construct()
-	{
-		require_once(ROOT . '/utils/DB.php');
-		require_once(ROOT . '/utils/CommentManager.php');
-		require_once(ROOT . '/class/News.php');
-	}
 
 	public static function getInstance()
 	{
@@ -25,30 +21,15 @@ class NewsManager
 	*/
 	public function listNews()
 	{
-		$db = DB::getInstance();
-		$rows = $db->select('SELECT * FROM `news`');
-
-		$news = [];
-		foreach($rows as $row) {
-			$n = new News();
-			$news[] = $n->setId($row['id'])
-			  ->setTitle($row['title'])
-			  ->setBody($row['body'])
-			  ->setCreatedAt($row['created_at']);
-		}
-
-		return $news;
+		return News::getInstance()->get();
 	}
 
 	/**
 	* add a record in news table
 	*/
-	public function addNews($title, $body)
+	public function addNews($data)
 	{
-		$db = DB::getInstance();
-		$sql = "INSERT INTO `news` (`title`, `body`, `created_at`) VALUES('". $title . "','" . $body . "','" . date('Y-m-d') . "')";
-		$db->exec($sql);
-		return $db->lastInsertId($sql);
+		return News::getInstance()->create($data); // the create() also returns the newly created data as object
 	}
 
 	/**
@@ -56,21 +37,15 @@ class NewsManager
 	*/
 	public function deleteNews($id)
 	{
-		$comments = CommentManager::getInstance()->listComments();
-		$idsToDelete = [];
 
-		foreach ($comments as $comment) {
-			if ($comment->getNewsId() == $id) {
-				$idsToDelete[] = $comment->getId();
-			}
+		$news = News::getInstance()->find($id);
+
+		$comments = $news->getComments(); // from class/News.php
+
+		foreach($comments as $comment) {
+			$comment->delete();
 		}
 
-		foreach($idsToDelete as $id) {
-			CommentManager::getInstance()->deleteComment($id);
-		}
-
-		$db = DB::getInstance();
-		$sql = "DELETE FROM `news` WHERE `id`=" . $id;
-		return $db->exec($sql);
+		$news->delete();
 	}
 }
