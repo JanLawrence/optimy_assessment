@@ -15,6 +15,9 @@ This simple application works, but with very old-style monolithic codebase, so d
   - more maintainable
 
 
+
+
+
 # Notes from me (Jan Lawrence Tolentino)
 
 ## Table Classes (class/Comment.php, class/News.php)
